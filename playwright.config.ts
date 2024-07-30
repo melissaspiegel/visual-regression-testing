@@ -1,13 +1,16 @@
-import { defineConfig } from '@playwright/test';
+import { defineConfig, devices, expect } from '@playwright/test';
 
 export default defineConfig({
   testDir: './tests',
   use: {
     baseURL: 'https://zerotier.local:54530',
-    browserName: 'chromium', // or 'firefox', 'webkit'
-    ignoreHTTPSErrors: true, // Add this line to ignore SSL errors
-    trace: 'on', // Record trace for each test
+    ignoreHTTPSErrors: true, // Ignore SSL errors
+    trace: 'off', // Record trace for each test
+    screenshot:  'on',
   },
   retries: 1,
-  reporter: [['list'], ['html', { open: 'never' }]],
+  reporter: [['list'], ['html', { open: 'always' }]], // Generate and always open the HTML report
+  expect: {
+    toHaveScreenshot: { maxDiffPixels: 100 },
+  },
 });
