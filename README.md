@@ -61,7 +61,7 @@ import { defineConfig } from '@playwright/test';
 export default defineConfig({
     testDir: './tests',
     use: {
-        baseURL: 'https://zerotier.local:54530',
+        baseURL: 'https://example.com',
         ignoreHTTPSErrors: true, // Ignore SSL errors
         trace: 'on', // Record trace for each test
         screenshot: 'only-on-failure', // Take screenshots only on test failures
